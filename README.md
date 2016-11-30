@@ -1,2 +1,2 @@
 # easy-lua
-An Easy API Framework based OpenResty
+An Easy API Framework based OpenResty.

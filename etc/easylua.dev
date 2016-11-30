@@ -1,0 +1,20 @@
+
+worker_processes  1;
+error_log logs/error.log;
+events {
+    worker_connections 1024;
+}
+http {
+  lua_package_path "/home/vagrant/code/easy-lua/vendor/?.lua;//home/vagrant/code/easy-lua/?.lua;";
+
+  server {
+    listen       *:8080;
+    server_name easylua.dev;
+    set $root /home/vagrant/code/easy-lua;
+
+    location / {
+      lua_need_request_body on;
+      content_by_lua_file $root/app.lua;
+    }
+  }
+}
